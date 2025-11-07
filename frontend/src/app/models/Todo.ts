@@ -1,11 +1,7 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
+import { ITodo } from '../types/todo';
 
-export interface ITodo extends Document {
-  title: string;
-  completed: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
+export interface ITodoDocument extends Document, ITodo {}
 
 const TodoSchema: Schema = new Schema(
   {
