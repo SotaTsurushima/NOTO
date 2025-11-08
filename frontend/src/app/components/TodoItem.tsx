@@ -11,7 +11,7 @@ export default function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
     <div className="flex items-center gap-3 p-4 bg-white dark:bg-zinc-900 rounded-lg shadow-sm">
       <input
         type="checkbox"
-        checked={todo.completed}
+        checked={todo.completed ?? false}
         onChange={() => onToggle(todo._id, todo.completed)}
         className="w-5 h-5"
       />
