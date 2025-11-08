@@ -44,6 +44,11 @@ export function useTodos() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ completed: !completed }),
       });
+      
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      
       const data = await res.json();
       setTodos(todos.map(todo => todo._id === id ? data.todo : todo));
     } catch (error) {
@@ -54,7 +59,12 @@ export function useTodos() {
   // Todo削除
   const deleteTodo = async (id: string) => {
     try {
-      await fetch(`/api/todos/${id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/todos/${id}`, { method: 'DELETE' });
+      
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      
       setTodos(todos.filter(todo => todo._id !== id));
     } catch (error) {
       console.error('Todoの削除に失敗しました:', error);
