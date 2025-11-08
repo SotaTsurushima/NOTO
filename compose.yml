@@ -10,7 +10,9 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
-    command: yarn dev
+    command: sh -c "yarn install && yarn dev"
+    depends_on:
+      - mongo
 
   mongo:
     image: mongo:7
