@@ -13,7 +13,6 @@ export default function Home() {
         <h1 className="text-3xl font-bold text-center mb-8 text-black dark:text-zinc-50">
           Todo App
         </h1>
-
         <TodoForm onSubmit={createTodo} loading={loading} />
         <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
       </div>
