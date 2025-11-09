@@ -25,6 +25,8 @@ jobs:
         run: |
           cd frontend
           yarn build
+        env:
+          MONGO_URI: mongodb://localhost:27017/dummy
 
       - name: Deploy to Vercel
         run: |
