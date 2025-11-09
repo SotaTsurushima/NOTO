@@ -12,7 +12,7 @@ export default function Home() {
     <div className="min-h-screen bg-zinc-50 dark:bg-black py-12 px-4">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold text-center mb-8 text-black dark:text-zinc-50">
-          Todo App
+          Todo App deploy test
         </h1>
         <TodoForm onSubmit={createTodo} loading={loading} />
         <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
