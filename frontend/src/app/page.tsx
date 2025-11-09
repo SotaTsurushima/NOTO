@@ -6,6 +6,7 @@ import TodoList from './components/TodoList';
 
 export default function Home() {
   const { todos, loading, createTodo, toggleTodo, deleteTodo } = useTodos();
+  console.log('todos', todos);
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black py-12 px-4">
