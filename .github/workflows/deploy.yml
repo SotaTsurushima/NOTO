@@ -8,6 +8,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
 
     steps:
       - uses: actions/checkout@v4
@@ -17,21 +20,15 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: |
-          cd frontend
-          yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
 
       - name: Build project
-        run: |
-          cd frontend
-          yarn build
+        run: yarn build
         env:
           MONGO_URI: mongodb://localhost:27017/dummy
 
       - name: Deploy to Vercel
-        run: |
-          cd frontend
-          npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
